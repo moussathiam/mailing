@@ -28,81 +28,15 @@
 			<div class="titre">
 				<h4> <i class="fa-solid fa-clock-rotate-left" style="font-size: 20px;"></i> HISTORIQUE </h4> 
 			</div>
-			<table id="campagneTable" class="display table table-sm table-striped table-responsive-xs text-center">
-			    <thead>
-			        <tr>
-			            <th class="text-center">Date</th>
-			            <th class="text-center">Envoyé</th>
-			            <th class="text-center">Echoué</th>
-			        </tr>
-			    </thead>
-			    <tbody>
-			        <tr th:each="campagne: ${campagnes}" th:onclick="campangefocus([[${campagne.id}]])">
-			    		<td th:text="${campagne.dateStr}">Oranges</td>
-			    		<td th:text="${campagne.nbEnvoye}">Oranges</td>
-			    		<td th:text="${campagne.nbNonEnvoye}">Oranges</td>
-			    	</tr>
-			    </tbody>
-			</table>
+			
+			<button th:onclick="focus()"> tester </button>
+			
 		</div>
 		
 	</div>
 	
-	
-	<!-- Modal -->
-	<div class="fade modal" id="myModal" tabindex="-1" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Mails</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-		      <table id="mailTable" class="display table table-sm table-striped table-responsive-xs text-center">
-				    <thead>
-				        <tr>
-				            <th class="text-center">Adresse mail</th>
-				            <th class="text-center">Etat</th>
-				        </tr>
-				    </thead>
-				    <tbody>
-				        <tr>
-				    		<td>AMoussathiam80@gmail.com</td>
-				    		<td>
-				    			 Réussi <i style="color:green" class="fa-solid fa-check"></i>
-				    		</td>
-				    	</tr>
-				        <tr>
-				    		<td>Moussathiam80@gmail.com</td>
-				    		<td>
-								Echoué <i style="color:red" class="fa-solid fa-circle-exclamation"></i>
-							</td>
-				    	</tr>
-				        <tr>
-				    		<td>Moussathiam80@gmail.com</td>
-				    		<td>
-				    			Réussi 
-				    			<i style="color:green" class="fa-solid fa-check"></i>
-							</td>
-				    	</tr>
-				        <tr>
-				    		<td>Moussathiam80@gmail.com</td>
-				    		<td>
-				    			Echoué <i style="color:red" class="fa-solid fa-circle-exclamation"></i>
-							</td>
-				    	</tr>
-				    </tbody>
-				</table>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
+	<p th:text="${taches}"></p>
+		
 </body>
 
 
@@ -112,39 +46,17 @@
 <script src="/DataTables/datatables.js"></script>
 <script type="text/javascript">
 
-	function campangefocus(id){
-		console.log("id " + id);
-		$('#myModal').modal();
+	function focus(){
+		var taches = /*[${taches}]*/ 'default';
+		console.log("fffd");		
 	}
 	
 
 	$(document).ready( function () {
-		//var campagnes = /*[[${campagnes}]]*/ 'default';
-	    $('#campagneTable, #mailTable').DataTable({
-	        language: {
-	            processing:     "Traitement en cours...",
-	            search:         "Rechercher&nbsp;:",
-	            lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
-	            info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-	            infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-	            infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-	            infoPostFix:    "",
-	            loadingRecords: "Chargement en cours...",
-	            zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-	            emptyTable:     "Aucune donnée disponible dans le tableau",
-	            paginate: {
-	                first:      "Premier",
-	                previous:   "Pr&eacute;c&eacute;dent",
-	                next:       "Suivant",
-	                last:       "Dernier"
-	            },
-	            aria: {
-	                sortAscending:  ": activer pour trier la colonne par ordre croissant",
-	                sortDescending: ": activer pour trier la colonne par ordre décroissant"
-	            }
-	        }
-	    });
-	} );
+		var taches = /*[${taches}]*/ 'default';
+		console.log(taches);		
+	});
+
 </script>
 
 

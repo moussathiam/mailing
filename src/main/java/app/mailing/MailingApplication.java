@@ -1,9 +1,6 @@
 package app.mailing;
 
-import java.io.Console;
-import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,18 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import app.mailing.dao.CampagneMailingRepository;
-import app.mailing.dao.ContactRepository;
-import app.mailing.dao.MailRepository;
-import app.mailing.entities.CampagneMailing;
-import app.mailing.entities.Contact;
-import app.mailing.entities.EmailDetails;
-import app.mailing.entities.Mail;
 import app.mailing.metiers.DateMail;
 import app.mailing.metiers.DateMailImpl;
 import app.mailing.metiers.EmailService;
 import app.mailing.metiers.JourFerier;
 import app.mailing.metiers.JourFerierImpl;
+import app.mailing.metiers.SslWarningRemover;
 import app.mailing.metiers.TaskAlfrescoService;
 import app.mailing.metiers.TaskAlfrescoServiceImpl;
 
@@ -31,15 +22,12 @@ import app.mailing.metiers.TaskAlfrescoServiceImpl;
 public class MailingApplication implements CommandLineRunner {
 
 	@Autowired
-	private ContactRepository contactRepository;
-	@Autowired
-	private MailRepository mailRepository;
-	@Autowired
 	private EmailService emailService;
 
 	private DateMail dateMail = new DateMailImpl();
 	private JourFerier jourFerier = new JourFerierImpl();
 	private TaskAlfrescoService tastAlfServ = new TaskAlfrescoServiceImpl();
+	public SslWarningRemover sslWarningRemover = new SslWarningRemover();
 
 	Timer t = new Timer();
 	int conteur = 0;
@@ -50,7 +38,6 @@ public class MailingApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		tastAlfServ.getTasks();
 //		t.schedule(recursiveTaskByWeek(), date);
 //		t.schedule(recursiveTaskByMonth(), date);
 		
@@ -75,7 +62,7 @@ public class MailingApplication implements CommandLineRunner {
 		return new TimerTask() {
 			@Override
 			public void run() {
-				//---Programmation pour le moise prochain
+				//---Programmation pour le mois prochain
 				Date date = dateMail.dateMoisSuivant(new Date(), true);
 				t.schedule(recursiveTaskByMonth(), date);
 				System.out.println("Prochaine mois date --- " + date);
