@@ -10,11 +10,13 @@ public class GroupeFinal {
 	 public ArrayList<UserTaches> users;
 	 public int nbTacheEnCoursTotal;
 	 public int nbTacheEnClotureeTotal;
+	 public int nbTache48hTotal;
 	public GroupeFinal() {
 		super();
 		users = new ArrayList<UserTaches>();
 		nbTacheEnCoursTotal = 0;
 		nbTacheEnClotureeTotal = 0;
+		nbTache48hTotal = 0;
 	}
 	 
 }

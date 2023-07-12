@@ -80,10 +80,10 @@ public class TaskAlfrescoServiceImpl implements TaskAlfrescoService {
 	}
 	
 	@Override
-	public TacheFiltreReponse getTachesFilter(String assignee, String state, Date date) {
+	public TacheFiltreReponse getTachesFilter(String assignee, String state, Date dateStart, Date dateEnd, Date endDateStart) {
 		System.out.println("----getTachesFilter-----");
 		String uri = "https://apirect.camacte.com/api-activiti-app/enterprise/custom-service/tasks/filter?api-key=93b7e27a-9e8c-42ee-94be-b9d2cd9bbe67"; 
-		TacheFilter tacheFilter = new TacheFilter(assignee, state, date);
+		TacheFilter tacheFilter = new TacheFilter(assignee, state, dateStart, dateEnd, endDateStart);
 		HttpEntity<String> request = new HttpEntity(tacheFilter, setHeader("admin@app.activiti.com", "admin"));
 	    ResponseEntity<TacheFiltreReponse> response = new RestTemplate().exchange(uri, HttpMethod.POST, request, TacheFiltreReponse.class);
 	    

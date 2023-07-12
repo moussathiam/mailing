@@ -13,5 +13,5 @@ public interface TaskAlfrescoService {
 	List getGroupes();
 	app.mailing.entities.user.List getUsersGroupe(String groupe_id);
 	DetailUser getDetailUser(String user_id);
-	TacheFiltreReponse getTachesFilter(String assignee, String state, Date date);
+	TacheFiltreReponse getTachesFilter(String assignee, String state, Date dateStart, Date dateEnd, Date endDateStart);
 }
